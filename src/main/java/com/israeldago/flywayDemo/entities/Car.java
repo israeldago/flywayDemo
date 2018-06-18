@@ -6,20 +6,13 @@ import javax.persistence.*;
 @Table(name = "cars")
 public class Car {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @CsvBindByName
     private Integer id;
-//    @CsvBindByName
     private String brand;
-//    @CsvBindByName
     private String color;
     @Transient
     private String customData;
 
     public Car() {}
-
-    public Car(String brand, String color) {
-        this(0,brand,color);
-    }
 
     public Car(Integer id, String brand, String color) {
         this.id = id;
