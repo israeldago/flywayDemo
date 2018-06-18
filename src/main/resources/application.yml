@@ -1,0 +1,17 @@
+spring:
+  output.ansi.enabled: ALWAYS
+  datasource:
+    url: jdbc:mysql://localhost:3306/flytestdb?useSSL=false
+    username: root
+    password: idago
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+csv:
+  location: classpath:carData.csv
+#  flyway:
+#    url: jdbc:mysql://localhost:3306/flytestdb?useSSL=false
+#    user: root
+#    password: idago
