@@ -47,10 +47,10 @@ public class V0_0_5__Read_CSV implements SpringJdbcMigration {
                                                     .stream()
                                                     .noneMatch(car -> car.getId().equals(carCSV.getId()));
             if(noneMatch){
-                jdbcTemplate.update("insert into cars (id,brand,color,customData) values(?,?,?,?)",
+                jdbcTemplate.update("insert into cars (id,brand,color,custom) values(?,?,?,?)",
                         carCSV.getId(), carCSV.getBrand(), carCSV.getColor(), json);
             }else {
-                jdbcTemplate.update("update cars set brand=?, color=? , customData=? where id=?",
+                jdbcTemplate.update("update cars set brand=?, color=? , custom=? where id=?",
                         carCSV.getBrand(), carCSV.getColor(), json, carCSV.getId());
             }
         });
@@ -68,10 +68,10 @@ public class V0_0_5__Read_CSV implements SpringJdbcMigration {
             car.setId(rs.getInt("id"));
             car.setBrand(rs.getString("brand"));
             car.setColor(rs.getString("color"));
-            String customData = Optional.ofNullable(rs.getClob("customData"))
+            String customData = Optional.ofNullable(rs.getClob("custom"))
                                             .map(this::obtainAndProcessData)
                                             .orElse("");
-            car.setCustomData(customData);
+            car.setCustom(customData);
             return car;
         });
     }

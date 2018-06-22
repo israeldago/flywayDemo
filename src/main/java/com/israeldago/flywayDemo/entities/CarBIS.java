@@ -1,24 +1,23 @@
 package com.israeldago.flywayDemo.entities;
 
+import com.opencsv.bean.CsvBindByName;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cars")
-public class Car {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "bla")
+public class CarBIS {
+    @Id
+    @CsvBindByName
     private Integer id;
+    @CsvBindByName
     private String brand;
+    @CsvBindByName
     private String color;
-    @Transient
+    @CsvBindByName @Lob
     private String custom;
 
-    public Car() {}
-
-    public Car(Integer id, String brand, String color) {
-        this.id = id;
-        this.brand = brand;
-        this.color = color;
-    }
+    public CarBIS() {}
 
     public Integer getId() {
         return id;
