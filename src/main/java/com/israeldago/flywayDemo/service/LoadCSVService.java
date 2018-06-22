@@ -43,7 +43,7 @@ public class LoadCSVService {
             carBIS.setColor(carCSV.getColor());
 
             carBIS.setCustom(json);
-            repository.saveAndFlush(carBIS);
+            repository.save(carBIS);
         });
     }
 
